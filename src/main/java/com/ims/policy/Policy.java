@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 @Data
@@ -12,6 +13,7 @@ import java.util.Comparator;
 public class Policy {
     private String policyID, policyName;
     private int policyInvestment, policyReturn;
+    private ArrayList<Beneficiary> beneficiaries;
     public static Comparator<Policy> getComparator(int field, int order){
         switch (field){
             case 0 -> {

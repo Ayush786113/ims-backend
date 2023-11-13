@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -56,5 +53,25 @@ public class Service {
         } while (policy == null);
         float emi = (float) (policy.getPolicyInvestment() - downpayment) /months;
         return emi;
+    }
+    public Beneficiary createBeneficiary(String ppolicyID, Beneficiary beneficiary){
+        List<Policy> policies = mockDataFactory.getPolicies();
+        for(Policy policy : policies){
+            if(policy.getPolicyID().equals(ppolicyID)){
+                ArrayList<Beneficiary> beneficiaries = policy.getBeneficiaries();
+                beneficiaries.add(beneficiary);
+                policy.setBeneficiaries(beneficiaries);
+                break;
+            }
+        }
+        return beneficiary;
+    }
+    public List<Beneficiary> getBeneficiaries(String policyID){
+        List<Policy> policies = mockDataFactory.getPolicies();
+        for(Policy policy : policies){
+            if(policy.getPolicyID().equals(policyID))
+                return policy.getBeneficiaries();
+        }
+        return null;
     }
 }
