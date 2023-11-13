@@ -66,11 +66,11 @@ public class Service {
         }
         return beneficiary;
     }
-    public List<Beneficiary> getBeneficiaries(String policyID){
+    public Policy getPolicy(String policyID){
         List<Policy> policies = mockDataFactory.getPolicies();
         for(Policy policy : policies){
             if(policy.getPolicyID().equals(policyID))
-                return policy.getBeneficiaries();
+                return policy;
         }
         return null;
     }

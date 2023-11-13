@@ -54,6 +54,6 @@ public class Controller {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> getBeneficiaries(@PathVariable("id") String policyID){
-        return new ResponseEntity<>(service.getBeneficiaries(policyID), HttpStatus.OK);
+        return new ResponseEntity<>(service.getPolicy(policyID), HttpStatus.OK);
     }
 }
